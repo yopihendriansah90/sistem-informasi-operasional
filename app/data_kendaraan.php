@@ -204,7 +204,7 @@
           icon: "success",
           confirmButtonText: "OKE"
         }).then((result)=>{
-          window.location=("delete/hapus_bpjs.php?id="+data_id);
+          window.location=("delete/hapus_kendaraan.php?id="+data_id);
           // if(result.isConfirmed){
 
           // }
