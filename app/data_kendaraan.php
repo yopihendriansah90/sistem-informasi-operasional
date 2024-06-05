@@ -58,6 +58,8 @@
                       data-target="#modal-view" href="#" data-merek="<?php echo $kendaraan['merek'] ?>"
                       data-target="#modal-view" href="#" data-tahun="<?php echo $kendaraan['tahun'] ?>"
                       data-target="#modal-view" href="#" data-warna="<?php echo $kendaraan['warna'] ?>"
+                      data-target="#modal-view" href="#" data-nomor_mesin="<?php echo $kendaraan['nomor_mesin'] ?>"
+                      data-target="#modal-view" href="#" data-nomor_rangka="<?php echo $kendaraan['nomor_rangka'] ?>"
                       
                       
 
