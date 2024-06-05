@@ -149,7 +149,7 @@
               </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                  <button type="submit" class="btn btn-primary">kendaraanpan</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </div>
             </form>
@@ -185,31 +185,31 @@
       </div>
 <!-- akhir modal view data -->
 <script>
-  // function hapus_data(data_id){
-  //   // alert('Ok');
-  //   Swal.fire({
-  //     title: "Apakah kamu yakin?",
-  //     text: "Data yang sudah dihapus tidak bisa dikembalikan lagi",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     cancelButtonText: "Batal",
-  //     confirmButtonText: "Iya, hapus sekarang!"
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire({
-  //         title: "Terhapus!",
-  //         text: "Kamu berhasil menghapus data itu",
-  //         icon: "success",
-  //         confirmButtonText: "OKE"
-  //       }).then((result)=>{
-  //         window.location=("delete/hapus_bpjs.php?id="+data_id);
-  //         // if(result.isConfirmed){
+  function hapus_data(data_id){
+    // alert('Ok');
+    Swal.fire({
+      title: "Apakah kamu yakin?",
+      text: "Data yang sudah dihapus tidak bisa dikembalikan lagi",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Batal",
+      confirmButtonText: "Iya, hapus sekarang!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Terhapus!",
+          text: "Kamu berhasil menghapus data itu",
+          icon: "success",
+          confirmButtonText: "OKE"
+        }).then((result)=>{
+          window.location=("delete/hapus_bpjs.php?id="+data_id);
+          // if(result.isConfirmed){
 
-  //         // }
-  //       });
-  //     }
-  //   });
-  // }
+          // }
+        });
+      }
+    });
+  }
 </script>
