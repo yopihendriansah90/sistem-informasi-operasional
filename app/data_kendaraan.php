@@ -17,7 +17,6 @@
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
                   Tambah Data
                 </button>
-                <br></br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -27,6 +26,8 @@
                     <th>Merk</th>
                     <th>Tahun</th>
                     <th>Warna</th>
+                    <th>Nomor Mesin</th>
+                    <th>NOmor Rangka</th>
                     <th>Aaction</th>
                   </tr>
                   </thead>
@@ -40,12 +41,13 @@
                     ?>
                   <tr>
                     <td width='5'><?php echo $no;?></td>
-                    <td><?php echo $kendaraan['id'] ?></td>
                     <td><?php echo $kendaraan['nomor_kendaraan'] ?></td>
                     <td><?php echo $kendaraan['model'] ?></td>
                     <td><?php echo $kendaraan['merek'] ?></td>
                     <td><?php echo $kendaraan['tahun'] ?></td>
                     <td><?php echo $kendaraan['warna'] ?></td>
+                    <td><?php echo $kendaraan['nomor_mesin'] ?></td>
+                    <td><?php echo $kendaraan['nomor_rangka'] ?></td>
                     <td>
                       <a onclick="hapus_data(<?php echo $kendaraan['id']?>)" class="btn btn-sm btn-danger m-1">Hapus</a>
                       <a href="index.php?page=edit-bpjs&&id=<?php echo $kendaraan['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
@@ -69,12 +71,15 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                  <th>No</th>
+                  <tr>
+                    <th>No</th>
                     <th>Plat Nomor</th>
                     <th>Model</th>
                     <th>Merk</th>
                     <th>Tahun</th>
                     <th>Warna</th>
+                    <th>Nomor Mesin</th>
+                    <th>NOmor Rangka</th>
                     <th>Aaction</th>
                   </tr>
                   </tfoot>
@@ -140,12 +145,26 @@
                
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Warna</label>
-                        <input type="text" class="form-control" placeholder="Warna Kendaraan" name="warna" maxlength="20" required>
+                        <label>Nomor Mesin</label>
+                        <input type="text" class="form-control" placeholder="Nomor Mesin" name="nomor_mesin" maxlength="20" required>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Nomor Rangka</label>
+                        <input type="text" class="form-control" placeholder="Nomor Rangka" name="nomor_rangka" maxlength="20" required>
                       </div>
                     </div>
                   </div>                                     
-         
+                  <div class="row">
+               
+               <div class="col-sm-6">
+                 <div class="form-group">
+                   <label>Warna</label>
+                   <input type="text" class="form-control" placeholder="Warna Kendaraan" name="warna" maxlength="20" required>
+                 </div>
+               </div>
+             </div>  
               </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>

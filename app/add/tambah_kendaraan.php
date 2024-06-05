@@ -17,10 +17,12 @@ $model= $_POST['model'];
 $merek= $_POST['merek'];
 $tahun= $_POST['tahun'];
 $warna= $_POST['warna'];
+$nomor_mesin= $_POST['nomor_mesin'];
+$nomor_rangka= $_POST['nomor_rangka'];
 
 $createdDate = getDateTimeJakarta();
 $modifiedDate = getDateTimeJakarta();
-$query=mysqli_query($koneksi,"INSERT INTO Kendaraan(nomor_kendaraan, model,merek,tahun,warna) VALUES ('$nomor_kendaraan','$model','$merek','$tahun','$warna')");
+$query=mysqli_query($koneksi,"INSERT INTO Kendaraan(nomor_kendaraan, model,merek,tahun,warna,nomor_mesin,nomor_rangka) VALUES ('$nomor_kendaraan','$model','$merek','$tahun','$warna','$nomor_mesin','$nomor_rangka')");
 header('Location: ../index.php?page=data-kendaraan');
 
 

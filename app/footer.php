@@ -154,12 +154,12 @@
   //     var keterangan = $(this).attr('data-keterangan');
   //     var id_lokasi = $(this).attr('data-id_lokasi');
   //     var status = $(this).attr('data-status');
-  //     var id_invoice = $(this).attr('data-id_invoice');
+  //     var id_invoices = $(this).attr('data-id_invoices');
   //     $.ajax({
   //       url:"view/view-data-kas-keluar.php",
   //       dataType:"html",
   //       method:"POST",
-  //       data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,id_lokasi:id_lokasi,status:status,id_invoice:id_invoice},
+  //       data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,id_lokasi:id_lokasi,status:status,id_invoices:id_invoices},
   //       success: function(data){
   //         $('#hasil-view-data').html(data);
   //       }
@@ -193,7 +193,7 @@
       var keterangan = $(this).attr('data-keterangan');
       var lokasi = $(this).attr('data-lokasi');
       var status = $(this).attr('data-status');
-      var id_invoice = $(this).attr('data-id_invoice');
+      var id_invoices = $(this).attr('data-id_invoices');
       var foto = $(this).attr('data-foto');
       var created_at = $(this).attr('data-created_at');
       var updated_at = $(this).attr('data-updated_at');
@@ -202,7 +202,7 @@
         url:"view/view-data-kas-keluar.php",
         dataType:"html",
         method:"POST",
-        data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,lokasi:lokasi,status:status,id_invoice:id_invoice,foto:foto,created_at:created_at,updated_at:updated_at},
+        data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,lokasi:lokasi,status:status,id_invoices:id_invoices,foto:foto,created_at:created_at,updated_at:updated_at},
         success: function(data){
           $('#hasil-view-data').html(data);
           console.log(status);
