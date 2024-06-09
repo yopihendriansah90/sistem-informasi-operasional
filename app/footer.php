@@ -1,5 +1,5 @@
   <footer class="main-footer">
-    <strong>Created By Yopi Hendriansah.</strong>
+    <strong>Created By <a class="link-secondary" href="https://www.linkedin.com/in/yopihendriansah/" target="_blank" rel="noopener noreferrer"> Yopi Hendriansah.</a></strong>
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0
     </div>
@@ -76,99 +76,10 @@
   });
 
 
-  $('.testing').click(function(){
-  //   var nama = $(this).attr('data-nama');
-  //   var nik = $(this).attr('data-nik');
-  //   var tempLahir = $(this).attr('data-tempLahir');
-  //   var tglLahir = $(this).attr('data-tglLahir');
-  //   var alamat = $(this).attr('data-alamat');
-  //   var createdDate = $(this).attr('data-createdDate');
-  //   var modifiedDate = $(this).attr('data-modifiedDate');
-  //   var fotoKtp = $(this).attr('data-fotoKtp');
+// ======================================================================================
 
-    
-  
-  //   $.ajax({
-  //     url:"view/view-data-karyawan.php",
-  //     dataType:"html",
-  //     method:"POST",
-  //     data:{nama:nama,nik:nik,tempLahir:tempLahir,tglLahir:tglLahir,alamat,fotoKtp:fotoKtp,createdDate:createdDate,modifiedDate:modifiedDate},
-  //     success: function(data){
-  //       $('#hasil-view-data').html(data);
-  //     }
-  // });
-  console.log('test');
-});
-
-
-  // // view data sim
-  // $('.view-data-sim').click(function(){
-  //   var nama = $(this).attr('data-nama');
-  //   var nik = $(this).attr('data-nik');
-  //   var nomorSim = $(this).attr('data-nomorSim');
-  //   var masaAktif = $(this).attr('data-masaAktif');
-  //   var fotoSim = $(this).attr('data-fotoSim');
-
-  //   console.log(nama);
-  
-  //   $.ajax({
-  //     url:"view/view-data-sim.php",
-  //     dataType:"html",
-  //     method:"POST",
-  //     data:{nama:nama,nik:nik,nomorSim:nomorSim,masaAktif:masaAktif,fotoSim:fotoSim},
-  //     success: function(data){
-  //       $('#hasil-view-data').html(data);
-  //     }
-  // });
-  //   // console.log(nik);
-  // });
-
-
-
-  // // view data BPJS Ketenagakerjaan
-  // $('.view-data-bpjs').click(function(){
-  //   var nama = $(this).attr('data-nama');
-  //   var nik = $(this).attr('data-nik');
-  //   var nomorBpjs = $(this).attr('data-nomorBpjs');
-  //   console.log(nama);
-  
-  //   $.ajax({
-  //     url:"view/view-data-bpjs.php",
-  //     dataType:"html",
-  //     method:"POST",
-  //     data:{nama:nama,nik:nik,nomorBpjs:nomorBpjs},
-  //     success: function(data){
-  //       $('#hasil-view-data').html(data);
-  //     }
-  // });
-  //   console.log(nomorBpjs);
-  // });
-
-
-
-  //   // view data Kendaraan
-  //   $('.view-data-s').click(function(){
-  //     console.log('ok');
-  //     var tanggal = $(this).attr('data-tanggal');
-  //     var jumlah = $(this).attr('data-jumlah');
-  //     var keterangan = $(this).attr('data-keterangan');
-  //     var id_lokasi = $(this).attr('data-id_lokasi');
-  //     var status = $(this).attr('data-status');
-  //     var id_invoices = $(this).attr('data-id_invoices');
-  //     $.ajax({
-  //       url:"view/view-data-kas-keluar.php",
-  //       dataType:"html",
-  //       method:"POST",
-  //       data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,id_lokasi:id_lokasi,status:status,id_invoices:id_invoices},
-  //       success: function(data){
-  //         $('#hasil-view-data').html(data);
-  //       }
-  //   });
-      
-  // });
-
-  // view data lokasi proyek
-  $('.view-data-lokasi').click(function(){
+    // view data lokasi proyek
+    $('.view-data-lokasi').click(function(){
       var nama = $(this).attr('data-nama');
       var alamat = $(this).attr('data-alamat');
       var created_at = $(this).attr('data-created_at');
@@ -182,8 +93,37 @@
           $('#hasil-view-data').html(data);
         }
     });
-      
   });
+      // penutup view data lokasi
+
+
+    // view data kendaraan
+    $('.view-data-kendaraan').click(function(){
+      var nomor_kendaraan = $(this).attr('data-nomor_kendaraan');
+      var model = $(this).attr('data-model');
+      var merek = $(this).attr('data-merek');
+      var tahun = $(this).attr('data-tahun');
+      var warna = $(this).attr('data-warna');
+      var nomor_mesin = $(this).attr('data-nomor_mesin');
+      var nomor_rangka = $(this).attr('data-nomor_rangka');
+      var createdDate = $(this).attr('data-createdDate');
+      var modifiedDate = $(this).attr('data-modifiedDate');
+
+
+      $.ajax({
+        url:"view/view-data-kendaraan.php",
+        dataType:"html",
+        method:"POST",
+        data:{nomor_kendaraan:nomor_kendaraan,model:model,merek:merek,tahun:tahun,warna:warna,nomor_mesin:nomor_mesin,nomor_rangka:nomor_rangka,createdDate:createdDate,modifiedDate:modifiedDate},
+        success: function(data){
+          $('#hasil-view-data').html(data);
+        }
+    });
+  });
+      
+
+
+
 
 
    // view data kas keluar
@@ -208,111 +148,68 @@
           console.log(status);
         }
     });
+  });
+      
+  // ========================================batasnormal=============================
+
+  
+
+
+
+    // view data Kendaraan
+    $('.view-data-kendaraan').click(function(){
+      var nomor_kendaraan = $(this).attr('data-nomor_kendaraan');
+      var model = $(this).attr('data-model');
+      var merek = $(this).attr('data-merek');
+      var tahun = $(this).attr('data-tahun');
+      var warna = $(this).attr('data-warna');
+      var nomor_mesin = $(this).attr('data-nomor_mesin');
+      var nomor_rangka = $(this).attr('data-nomor_rangka');
+      console.log(nomor_kendaraan);
+    //   $.ajax({
+    //     url:"view/view-data-kas-keluar.php",
+    //     dataType:"html",
+    //     method:"POST",
+    //     data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,id_lokasi:id_lokasi,status:status,id_invoices:id_invoices},
+    //     success: function(data){
+    //       $('#hasil-view-data').html(data);
+    //     }
+    // });
       
   });
 
-  // $(document).ready(function(){
-  //   setInterval(function(){
-  //     $('#report-mhs').load("banner.php");
-  //   },1000);
-  // });
+
+  
 
 
-  //mengambild ata dari karyawan dengan ajax
+
+
+
+
+  
+
+//   //mengambil data lokasi
 //   $(document).ready(function(){
-//     // Ketika halaman dimuat, ambil data karyawan dan bangun dropdown
+//     // Ketika halaman dimuat, ambil data lokasi dan bangun dropdown
 //     $.ajax({
-//         url: 'get_karyawan.php', // Ganti dengan URL file PHP yang akan mengambil data karyawan
+//         url: 'get/get_lokasi.php', // Ganti dengan URL file PHP yang akan mengambil data lokasi
 //         method: 'GET',
 //         dataType:"json",
 //         success: function(response) {
-//           var dataKaryawan = response;
-//             var dropdown = $('#karyawan');
-//             $.each(dataKaryawan, function(index, karyawan) {
-//                 dropdown.append($('<option></option>').attr('value', karyawan.nik).text(karyawan.nama + ' - ' + karyawan.nik));
+//           var dataLokasi = response;
+//             var dropdown = $('#lokasi');
+//             $.each(dataLokasi, function(index, lokasi) {
+//                 dropdown.append($('<option></option>').attr('value', lokasi.id).text(lokasi.nama));
 //             });
 //         }
 //     });
     
 //     // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
-//     $('#karyawan').change(function(){
-//         var selectedKaryawanId = $(this).val();
-//         $('#selectedKaryawanId').val(selectedKaryawanId);
-//     });
-// });
-
-
-//   //mengambild ata dari karyawan yang belum dapat bpjs dengan ajax
-//   $(document).ready(function(){
-//     // Ketika halaman dimuat, ambil data karyawan dan bangun dropdown
-//     $.ajax({
-//         url: 'get_karyawanbpjs.php', // Ganti dengan URL file PHP yang akan mengambil data karyawan
-//         method: 'GET',
-//         dataType:"json",
-//         success: function(response) {
-//           var dataKaryawan = response;
-//             var dropdown = $('#karyawanbpjs');
-//             $.each(dataKaryawan, function(index, karyawan) {
-//                 dropdown.append($('<option></option>').attr('value', karyawan.nik).text(karyawan.nama + ' - ' + karyawan.nik));
-//             });
-//         }
-//     });
-    
-//     // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
-//     $('#karyawanbpjs').change(function(){
+//     $('#lokasi').change(function(){
 //         var selectedID = $(this).val();
 //         $('#selectedID').val(selectedID);
 //     });
 // });
-
-
-  //mengambild ata dari karyawan yang belum dapat bpjs dengan ajax
-  $(document).ready(function(){
-    // Ketika halaman dimuat, ambil data karyawan dan bangun dropdown
-    $.ajax({
-        url: 'get_karyawanbpjs.php', // Ganti dengan URL file PHP yang akan mengambil data karyawan
-        method: 'GET',
-        dataType:"json",
-        success: function(response) {
-          var dataKaryawan = response;
-            var dropdown = $('#karyawanbpjs');
-            $.each(dataKaryawan, function(index, karyawan) {
-                dropdown.append($('<option></option>').attr('value', karyawan.nik).text(karyawan.nama + ' - ' + karyawan.nik));
-            });
-        }
-    });
-    
-    // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
-    $('#karyawanbpjs').change(function(){
-        var selectedID = $(this).val();
-        $('#selectedID').val(selectedID);
-    });
-});
-  
-
-
-  //mengambil data lokasi
-  $(document).ready(function(){
-    // Ketika halaman dimuat, ambil data lokasi dan bangun dropdown
-    $.ajax({
-        url: 'get/get_lokasi.php', // Ganti dengan URL file PHP yang akan mengambil data lokasi
-        method: 'GET',
-        dataType:"json",
-        success: function(response) {
-          var dataLokasi = response;
-            var dropdown = $('#lokasi');
-            $.each(dataLokasi, function(index, lokasi) {
-                dropdown.append($('<option></option>').attr('value', lokasi.id).text(lokasi.nama));
-            });
-        }
-    });
-    
-    // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
-    $('#lokasi').change(function(){
-        var selectedID = $(this).val();
-        $('#selectedID').val(selectedID);
-    });
-});
 
 
 
