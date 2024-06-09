@@ -1,5 +1,5 @@
   <footer class="main-footer">
-    <strong>Created By Yopi Hendriansah.</strong>
+    <strong>Created By <a class="link-secondary" href="https://www.linkedin.com/in/yopihendriansah/" target="_blank" rel="noopener noreferrer"> Yopi Hendriansah.</a></strong>
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0
     </div>
@@ -76,7 +76,7 @@
   });
 
 
-
+// ======================================================================================
 
     // view data lokasi proyek
     $('.view-data-lokasi').click(function(){
@@ -89,6 +89,32 @@
         dataType:"html",
         method:"POST",
         data:{nama:nama,alamat:alamat,created_at:created_at,updated_at:updated_at},
+        success: function(data){
+          $('#hasil-view-data').html(data);
+        }
+    });
+  });
+      // penutup view data lokasi
+
+
+    // view data kendaraan
+    $('.view-data-kendaraan').click(function(){
+      var nomor_kendaraan = $(this).attr('data-nomor_kendaraan');
+      var model = $(this).attr('data-model');
+      var merek = $(this).attr('data-merek');
+      var tahun = $(this).attr('data-tahun');
+      var warna = $(this).attr('data-warna');
+      var nomor_mesin = $(this).attr('data-nomor_mesin');
+      var nomor_rangka = $(this).attr('data-nomor_rangka');
+      var createdDate = $(this).attr('data-createdDate');
+      var modifiedDate = $(this).attr('data-modifiedDate');
+
+
+      $.ajax({
+        url:"view/view-data-kendaraan.php",
+        dataType:"html",
+        method:"POST",
+        data:{nomor_kendaraan:nomor_kendaraan,model:model,merek:merek,tahun:tahun,warna:warna,nomor_mesin:nomor_mesin,nomor_rangka:nomor_rangka,createdDate:createdDate,modifiedDate:modifiedDate},
         success: function(data){
           $('#hasil-view-data').html(data);
         }

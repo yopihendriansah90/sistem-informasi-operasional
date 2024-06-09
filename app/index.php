@@ -57,6 +57,8 @@ include('header.php');
         include('edit/edit_bpjs.php');
       }elseif($_GET['page']=='data-kendaraan'){
         include('data_kendaraan.php');
+      }elseif($_GET['page']=='edit-kendaraan'){
+        include('edit/edit_kendaraan.php');
       }elseif($_GET['page']=='data-stnk'){
         include('data_stnk.php');
       }elseif($_GET['page']=='data-kas-keluar'){
