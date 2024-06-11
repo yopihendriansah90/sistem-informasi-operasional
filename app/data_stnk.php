@@ -1,6 +1,7 @@
 
 
     <!-- Main content -->
+    <script src="dist/js/calcdate.js"></script>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -11,6 +12,10 @@
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Data Pajak STNK Kendaraan</h3>
+
+
+            
+
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -25,6 +30,8 @@
                     <th>Nomor Kendaraan</th>
                     <th>Pajak 1 tahun</th>
                     <th>Pajak 5 tahun</th>
+                    <th>Created Date</th>
+                    <th>Modified Date</th>
                     <th>Aaction</th>
                   </tr>
                   </thead>
@@ -40,18 +47,42 @@
                     <td width='5'><?php echo $no;?></td>
   
                     <td><?php echo $pajak['nomor_kendaraan'] ?></td>
-                    <td><?php echo $pajak['pajak1thn'] ?></td>
-                    <td><?php echo $pajak['pajak5thn'] ?></td>
+                    <td><?php echo $pajak['pajak1thn'] ?>
+                    <div id="1thn<?=$pajak['id']?>"></div>
+                        <script>
+                            // Mendapatkan nilai PHP dan menyimpannya dalam variabel JavaScript
+                            var targetDate= '<?=$pajak['pajak1thn']?>';
+                            var id = '1thn<?=$pajak['id']?>';
+
+                            // Memanggil fungsi JavaScript dengan nilai dari PHP
+                            calcDate(targetDate,id);
+                        </script>
+                    </td>
+                    <td><?php echo $pajak['pajak5thn'] ?>
+                      <div id="5thn<?=$pajak['id']?>"></div>
+                          <script>
+                              // Mendapatkan nilai PHP dan menyimpannya dalam variabel JavaScript
+                              var targetDate = '<?=$pajak['pajak5thn']?>';
+                              var id = '5thn<?=$pajak['id']?>';
+
+                              // Memanggil fungsi JavaScript dengan nilai dari PHP
+                              calcDate(targetDate,id);
+                          </script>
+                    </td>
+                    <td><?php echo $pajak['createdDate'] ?></td>
+                    <td><?php echo $pajak['modifiedDate'] ?></td>
                     <td>
                       <a onclick="hapus_data(<?php echo $pajak['id']?>)" class="btn btn-sm btn-danger m-1">Hapus</a>
                       <a href="index.php?page=edit-bpjs&&id=<?php echo $pajak['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
                       
-                      <a class="view-data-stnk btn btn-sm btn-primary m-1" data-toggle="modal"
+                      <a class="view-data-pajak btn btn-sm btn-primary m-1" data-toggle="modal"
                        data-target="#modal-view" href="#" data-nomor_kendaraan="<?php echo $pajak['nomor_kendaraan'] ?>"
-                       data-target="#modal-view" href="#" data-pajak_1th="<?php echo $pajak['pajak_1th'] ?>"
-                      data-target="#modal-view" href="#" data-pajak_5th="<?php echo $pajak['pajak_5th'] ?>"
+                       data-target="#modal-view" href="#" data-pajak1thn="<?php echo $pajak['pajak1thn'] ?>"
+                       data-target="#modal-view" href="#" data-pajak5thn="<?php echo $pajak['pajak5thn'] ?>"
+                       data-target="#modal-view" href="#" data-createdDate="<?php echo $pajak['createdDate'] ?>"
+                       data-target="#modal-view" href="#" data-modifiedDate="<?php echo $pajak['modifiedDate'] ?>"
                   
-                      >View Data
+                      >View
                     </a>
                     </td>
                     
@@ -64,6 +95,8 @@
                     <th>Nomor Kendaraan</th>
                     <th>Pajak 1 tahun</th>
                     <th>Pajak 5 tahun</th>
+                    <th>Created Date</th>
+                    <th>Modified Date</th>
                     <th>Aaction</th>
                   </tr>
                   </tfoot>

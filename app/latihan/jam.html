@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" name="tgl" id="tgl" onchange="tgl()">
+    <script>
+function tgl(){
+    // Tanggal yang diberikan
+const dateStr = document.getElementById('tgl').value;
+
+// Mengubah string tanggal menjadi objek Date dan menghilangkan komponen waktu
+const targetDate = new Date(dateStr);
+targetDate.setHours(0, 0, 0, 0);
+
+// Mendapatkan waktu saat ini dan menghilangkan komponen waktu
+const currentDate = new Date();
+currentDate.setHours(0, 0, 0, 0);
+
+// Menghitung selisih waktu dalam milidetik
+const diffInMilliseconds = targetDate - currentDate;
+
+// Menghitung sisa waktu dalam tahun, bulan, dan hari
+let years = targetDate.getFullYear() - currentDate.getFullYear();
+let months = targetDate.getMonth() - currentDate.getMonth();
+let days = targetDate.getDate() - currentDate.getDate();
+
+// Menyesuaikan bulan dan tahun jika hari negatif
+if (days < 0) {
+    months--;
+    const lastMonth = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0);
+    days += lastMonth.getDate();
+}
+
+// Menyesuaikan tahun jika bulan negatif
+if (months < 0) {
+    years--;
+    months += 12;
+}
+
+// Mengecek kondisi untuk menampilkan pesan
+if (diffInMilliseconds <= 0) {
+    console.log("Masa aktif habis");
+} else if (years === 0 && months === 1 && days >= 0) {
+    console.log("Urgent 1 bulan lagi segera perpanjang pajak kendaraan");
+} else {
+    console.log(`Sisa waktu aktif: ${years} tahun, ${months} bulan, dan ${days} hari`);
+}
+}
+
+    </script>
+</body>
+</html>

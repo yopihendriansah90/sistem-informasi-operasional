@@ -120,10 +120,28 @@
         }
     });
   });
-      
+  
+  // akhir view data kendaraan
 
 
-
+      // view data pajak kendraaan
+      $('.view-data-pajak').click(function(){
+      var nomor_kendaraan = $(this).attr('data-nomor_kendaraan');
+      var pajak1thn = $(this).attr('data-pajak1thn');
+      var pajak5thn = $(this).attr('data-pajak5thn');
+      var createdDate = $(this).attr('data-createdDate');
+      var modifiedDate = $(this).attr('data-modifiedDate');
+      $.ajax({
+        url:"view/view-data-stnk.php",
+        dataType:"html",
+        method:"POST",
+        data:{nomor_kendaraan:nomor_kendaraan,pajak1thn:pajak1thn,pajak5thn:pajak5thn,createdDate:createdDate,modifiedDate:modifiedDate},
+        success: function(data){
+          $('#hasil-view-data').html(data);
+        }
+    });
+  });
+      // penutup view data pajak kendraaan
 
 
    // view data kas keluar
