@@ -10,7 +10,7 @@
 
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Data Pajak Kendaraan</h3>
+                <h3 class="card-title">Data Pajak STNK Kendaraan</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -31,7 +31,7 @@
                   <tbody>
                     <?php 
                     $no=0;
-                    $query=mysqli_query($koneksi,"SELECT * FROM PajakKendaraan");
+                    $query=mysqli_query($koneksi,"SELECT pk.*,k.nomor_kendaraan FROM pajakkendaraan pk JOIN kendaraan k ON pk.id_kendaraan = k.id ");
                     while($pajak=mysqli_fetch_array($query)){
 
                     $no++;
@@ -40,8 +40,8 @@
                     <td width='5'><?php echo $no;?></td>
   
                     <td><?php echo $pajak['nomor_kendaraan'] ?></td>
-                    <td><?php echo $pajak['pajak_1th'] ?></td>
-                    <td><?php echo $pajak['pajak_5th'] ?></td>
+                    <td><?php echo $pajak['pajak1thn'] ?></td>
+                    <td><?php echo $pajak['pajak5thn'] ?></td>
                     <td>
                       <a onclick="hapus_data(<?php echo $pajak['id']?>)" class="btn btn-sm btn-danger m-1">Hapus</a>
                       <a href="index.php?page=edit-bpjs&&id=<?php echo $pajak['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
@@ -89,7 +89,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form method="POST" action="add/tambah_bpjs.php" enctype="multipart/form-data">
+            <form method="POST" action="add/tambah_pajak_kendaraan.php" enctype="multipart/form-data">
               <div class="modal-body">
             
                   <div class="row">
@@ -98,17 +98,26 @@
                       <div class="form-group">
                         <label>Pilih Nomor Kendaraan</label>
 
-                        <select class="form-control" id="karyawanbpjs" required>
-                          <option value="">Pilih Karyawan</option>
+                        <select class="form-control" id="kendaraan" required>
+                          <option value="">Pilih Nomor Kendaraan</option>
                         </select>
-                        <input type="hidden" id="selectedID" name="nik">
+                        <input type="hidden" id="selectedID" name="id_kendaraan">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Nomor BPJS Ketenagakerjaan</label>
-                        <input type="text" class="form-control" placeholder="Nomor BPJS" name="nomorBpjs" maxlength="20" required>
+                        <label>Jatuh Tempo Pajak 1 Tahun</label>
+                        <input type="date" class="form-control" placeholder="" name="pajak1thn" maxlength="20" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Jatuh Tempo Pajak 5 Tahun</label>
+                        <input type="date" class="form-control" placeholder="" name="pajak5thn" maxlength="20" required>
                       </div>
                     </div>
                   </div>
@@ -118,7 +127,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                  <button type="submit" class="btn btn-primary">pajakpan</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </div>
             </form>

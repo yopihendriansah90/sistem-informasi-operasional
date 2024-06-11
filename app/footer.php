@@ -149,37 +149,37 @@
         }
     });
   });
+
+
+
+
+  //mengambil data kendadraan
+  $(document).ready(function(){
+    // Ketika halaman dimuat, ambil data lokasi dan bangun dropdown
+    $.ajax({
+        url: 'get/get_kendaraan.php', // Ganti dengan URL file PHP yang akan mengambil data kendaraan
+        method: 'GET',
+        dataType:"json",
+        success: function(response) {
+          var dataKendaraan = response;
+            var dropdown = $('#kendaraan');
+            $.each(dataKendaraan, function(index, kendaraan) {
+                dropdown.append($('<option></option>').attr('value', kendaraan.id).text(kendaraan.nomor_kendaraan));
+            });
+        }
+    });
+    
+    // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
+    $('#kendaraan').change(function(){
+        var selectedID = $(this).val();
+        $('#selectedID').val(selectedID);
+    });
+});
       
   // ========================================batasnormal=============================
 
   
 
-
-
-    // view data Kendaraan
-    $('.view-data-kendaraan').click(function(){
-      var nomor_kendaraan = $(this).attr('data-nomor_kendaraan');
-      var model = $(this).attr('data-model');
-      var merek = $(this).attr('data-merek');
-      var tahun = $(this).attr('data-tahun');
-      var warna = $(this).attr('data-warna');
-      var nomor_mesin = $(this).attr('data-nomor_mesin');
-      var nomor_rangka = $(this).attr('data-nomor_rangka');
-      console.log(nomor_kendaraan);
-    //   $.ajax({
-    //     url:"view/view-data-kas-keluar.php",
-    //     dataType:"html",
-    //     method:"POST",
-    //     data:{tanggal:tanggal,jumlah:jumlah,keterangan:keterangan,id_lokasi:id_lokasi,status:status,id_invoices:id_invoices},
-    //     success: function(data){
-    //       $('#hasil-view-data').html(data);
-    //     }
-    // });
-      
-  });
-
-
-  
 
 
 
