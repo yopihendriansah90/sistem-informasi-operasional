@@ -96,10 +96,10 @@
                   </li>
 
                   <li class="nav-item">
-                    <a href="index.php?page=data-stnk" class="nav-link 
+                    <a href="index.php?page=data-kir" class="nav-link 
                     <?php
                         if(isset($_GET['page'])){
-                          echo ($_GET['page'] == 'data-stnk') ? "active" : "";
+                          echo ($_GET['page'] == 'data-kir') ? "active" : "";
                         }
                     ?>
                     ">

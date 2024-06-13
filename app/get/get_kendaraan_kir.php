@@ -1,11 +1,13 @@
 <?php
 include('../../conf/config.php');
 // Query untuk mengambil data kendaraan
-$sql = "SELECT k.*
+
+$sql = "SELECT k.nomor_kendaraan,k.id
 FROM kendaraan k
-LEFT JOIN pajakkendaraan pk ON k.id = pk.id_kendaraan
-WHERE pk.id_kendaraan IS NULL;
+LEFT JOIN ujikir u ON k.id = u.id_kendaraan
+WHERE u.id_kendaraan IS NULL;
 ";
+
 $result = mysqli_query($koneksi, $sql);
 
 $lokasi = array();

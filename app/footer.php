@@ -144,6 +144,34 @@
       // penutup view data pajak kendraaan
 
 
+    // view data uji KIR
+    $('.view-data-kir').click(function(){
+      var nomor_kendaraan = $(this).attr('data-nomor_kendaraan');
+      var nomor_uji = $(this).attr('data-nomor_uji');
+      var masa_aktif = $(this).attr('data-masa_aktif');
+      var sisa_bulan = $(this).attr('data-sisa_bulan');
+      var sisa_hari = $(this).attr('data-sisa_hari');
+      var status = $(this).attr('data-status');
+      var createdDate = $(this).attr('data-createdDate');
+      var modifiedDate = $(this).attr('data-modifiedDate');
+      $.ajax({
+        url:"view/view-data-kir.php",
+        dataType:"html",
+        method:"POST",
+        data:{nomor_kendaraan:nomor_kendaraan,nomor_uji:nomor_uji,masa_aktif:masa_aktif,sisa_bulan:sisa_bulan,sisa_hari:sisa_hari,status:status,createdDate:createdDate,modifiedDate:modifiedDate},
+        success: function(data){
+          $('#hasil-view-data').html(data);
+        }
+    });
+  });
+      // penutup view data uji KIR
+
+
+
+
+
+
+
    // view data kas keluar
    $('.view-data-kas').click(function(){
       var tanggal = $(this).attr('data-tanggal');
@@ -167,20 +195,20 @@
         }
     });
   });
+  // akhir vie kas keluar
 
 
 
-
-  //mengambil data kendadraan
+  //mengambil data kendadraan yang belum pajak
   $(document).ready(function(){
     // Ketika halaman dimuat, ambil data lokasi dan bangun dropdown
     $.ajax({
-        url: 'get/get_kendaraan.php', // Ganti dengan URL file PHP yang akan mengambil data kendaraan
+        url: 'get/get_kendaraan_pajak.php', // Ganti dengan URL file PHP yang akan mengambil data kendaraan
         method: 'GET',
         dataType:"json",
         success: function(response) {
           var dataKendaraan = response;
-            var dropdown = $('#kendaraan');
+            var dropdown = $('#kendaraan_pajak');
             $.each(dataKendaraan, function(index, kendaraan) {
                 dropdown.append($('<option></option>').attr('value', kendaraan.id).text(kendaraan.nomor_kendaraan));
             });
@@ -188,13 +216,42 @@
     });
     
     // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
-    $('#kendaraan').change(function(){
+    $('#kendaraan_pajak').change(function(){
         var selectedID = $(this).val();
         $('#selectedID').val(selectedID);
     });
 });
+
+//  akhir dari pengambilan data kendaraan yang belum pajak
       
-  // ========================================batasnormal=============================
+
+  //mengambil data kendadraan yang belum kir
+  $(document).ready(function(){
+    // Ketika halaman dimuat, ambil data kir dan bangun dropdown
+    $.ajax({
+        url: 'get/get_kendaraan_kir.php', // Ganti dengan URL file PHP yang akan mengambil data kendaraan
+        method: 'GET',
+        dataType:"json",
+        success: function(response) {
+          var dataKendaraan = response;
+            var dropdown = $('#kendaraan_kir');
+            $.each(dataKendaraan, function(index, kendaraan) {
+                dropdown.append($('<option></option>').attr('value', kendaraan.id).text(kendaraan.nomor_kendaraan));
+            });
+        }
+    });
+    
+    // Ketika karyawan dipilih, simpan ID-nya ke dalam hidden input
+    $('#kendaraan_kir').change(function(){
+        var selectedID = $(this).val();
+        $('#selectedID').val(selectedID);
+    });
+});
+
+//  akhir dari pengambilan data kendaraan yang belum kir
+
+
+// ========================================batasnormal=============================
 
   
 

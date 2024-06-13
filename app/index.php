@@ -9,7 +9,7 @@ if(!$_SESSION['nama']){
 include('header.php'); 
 ?>
 <?php include('../conf/config.php'); ?>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -61,6 +61,10 @@ include('header.php');
         include('edit/edit_kendaraan.php');
       }elseif($_GET['page']=='data-stnk'){
         include('data_stnk.php');
+      }elseif($_GET['page']=='data-kir'){
+        include('data_kir.php');
+      }elseif($_GET['page']=='edit-kir'){
+        include('edit/edit_kir.php');
       }elseif($_GET['page']=='data-kas-keluar'){
         include('data_kas_keluar2.php');
       }elseif($_GET['page']=='data-kas-keluar-all'){
