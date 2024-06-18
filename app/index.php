@@ -61,6 +61,8 @@ include('header.php');
         include('edit/edit_kendaraan.php');
       }elseif($_GET['page']=='data-stnk'){
         include('data_stnk.php');
+      }elseif($_GET['page']=='edit-stnk'){
+        include('edit/edit_stnk.php');
       }elseif($_GET['page']=='data-kir'){
         include('data_kir.php');
       }elseif($_GET['page']=='edit-kir'){

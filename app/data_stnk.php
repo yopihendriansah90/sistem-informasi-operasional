@@ -73,7 +73,7 @@
                     <td><?php echo $pajak['modifiedDate'] ?></td>
                     <td>
                       <a onclick="hapus_data(<?php echo $pajak['id']?>)" class="btn btn-sm btn-danger m-1">Hapus</a>
-                      <a href="index.php?page=edit-bpjs&&id=<?php echo $pajak['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
+                      <a href="index.php?page=edit-stnk&id=<?php echo $pajak['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
                       
                       <a class="view-data-pajak btn btn-sm btn-primary m-1" data-toggle="modal"
                        data-target="#modal-view" href="#" data-nomor_kendaraan="<?php echo $pajak['nomor_kendaraan'] ?>"
