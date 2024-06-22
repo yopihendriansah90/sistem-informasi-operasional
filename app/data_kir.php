@@ -1,7 +1,6 @@
 
 
     <!-- Main content -->
-    <script src="dist/js/calcdate.js"></script>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -11,11 +10,7 @@
 
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Data Pajak STNK Kendaraan</h3>
-
-
-            
-
+                <h3 class="card-title">Data KIR Kendaraan</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -27,9 +22,12 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nomor Kendaraan</th>
-                    <th>Pajak 1 tahun</th>
-                    <th>Pajak 5 tahun</th>
+                    <th>Plant Nomor Kendaraan</th>
+                    <th>Nomor Uji Kendaraan</th>
+                    <th>Sisa Bulan</th>
+                    <th>Sisa Hari</th>
+                    <th>Masa Berlaku</th>
+                    <th>Status</th>
                     <th>Created Date</th>
                     <th>Modified Date</th>
                     <th>Aaction</th>
@@ -38,51 +36,36 @@
                   <tbody>
                     <?php 
                     $no=0;
-                    $query=mysqli_query($koneksi,"SELECT pk.*,k.nomor_kendaraan FROM pajakkendaraan pk JOIN kendaraan k ON pk.id_kendaraan = k.id ");
-                    while($pajak=mysqli_fetch_array($query)){
+                    $query=mysqli_query($koneksi,"SELECT * FROM view_kir");
+                    while($data=mysqli_fetch_array($query)){
+
 
                     $no++;
                     ?>
                   <tr>
                     <td width='5'><?php echo $no;?></td>
-  
-                    <td><?php echo $pajak['nomor_kendaraan'] ?></td>
-                    <td><?php echo $pajak['pajak1thn'] ?>
-                    <div id="1thn<?=$pajak['id']?>"></div>
-                        <script>
-                            // Mendapatkan nilai PHP dan menyimpannya dalam variabel JavaScript
-                            var targetDate= '<?=$pajak['pajak1thn']?>';
-                            var id = '1thn<?=$pajak['id']?>';
-
-                            // Memanggil fungsi JavaScript dengan nilai dari PHP
-                            calcDate(targetDate,id);
-                        </script>
-                    </td>
-                    <td><?php echo $pajak['pajak5thn'] ?>
-                      <div id="5thn<?=$pajak['id']?>"></div>
-                          <script>
-                              // Mendapatkan nilai PHP dan menyimpannya dalam variabel JavaScript
-                              var targetDate = '<?=$pajak['pajak5thn']?>';
-                              var id = '5thn<?=$pajak['id']?>';
-
-                              // Memanggil fungsi JavaScript dengan nilai dari PHP
-                              calcDate(targetDate,id);
-                          </script>
-                    </td>
-                    <td><?php echo $pajak['createdDate'] ?></td>
-                    <td><?php echo $pajak['modifiedDate'] ?></td>
+                    <td><?php echo $data['nomor_kendaraan']?></td>
+                    <td><?php echo $data['nomor_uji'] ?></td>
+                    <td><?php echo $data['sisa_bulan'] ?></td>
+                    <td><?php echo $data['sisa_hari'] ?></td>
+                    <td><?php echo $data['masa_aktif'] ?></td>
+                    <td><?php echo $data['status'] ?></td>
+                    <td><?php echo $data['createdDate'] ?></td>
+                    <td><?php echo $data['modifiedDate'] ?></td>
                     <td>
-                      <a onclick="hapus_data(<?php echo $pajak['id']?>)" class="btn btn-sm btn-danger m-1">Hapus</a>
-                      <a href="index.php?page=edit-bpjs&&id=<?php echo $pajak['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
+                      <a onclick="hapus_data(<?php echo $data['id']?>)" class="btn btn-sm btn-danger m-1">Hapus</a>
+                      <a href="index.php?page=edit-kir&id=<?php echo $data['id'];?>" class="btn btn-sm btn-success m-1">Edit</a>
                       
-                      <a class="view-data-pajak btn btn-sm btn-primary m-1" data-toggle="modal"
-                       data-target="#modal-view" href="#" data-nomor_kendaraan="<?php echo $pajak['nomor_kendaraan'] ?>"
-                       data-target="#modal-view" href="#" data-pajak1thn="<?php echo $pajak['pajak1thn'] ?>"
-                       data-target="#modal-view" href="#" data-pajak5thn="<?php echo $pajak['pajak5thn'] ?>"
-                       data-target="#modal-view" href="#" data-createdDate="<?php echo $pajak['createdDate'] ?>"
-                       data-target="#modal-view" href="#" data-modifiedDate="<?php echo $pajak['modifiedDate'] ?>"
-                  
-                      >View
+                      <a class="view-data-kir btn btn-sm btn-primary m-1" data-toggle="modal"
+                       data-target="#modal-view" href="#" data-nomor_kendaraan="<?php echo $data['nomor_kendaraan'] ?>"
+                      data-target="#modal-view" href="#" data-nomor_uji="<?php echo $data['nomor_uji'] ?>"  
+                      data-target="#modal-view" href="#" data-masa_aktif="<?php echo $data['masa_aktif'] ?>"  
+                      data-target="#modal-view" href="#" data-sisa_bulan="<?php echo $data['sisa_bulan'] ?>"  
+                      data-target="#modal-view" href="#" data-sisa_hari="<?php echo $data['sisa_hari'] ?>"  
+                      data-target="#modal-view" href="#" data-status="<?php echo $data['status'] ?>"  
+                      data-target="#modal-view" href="#" data-createdDate="<?php echo $data['createdDate'] ?>"  
+                      data-target="#modal-view" href="#" data-modifiedDate="<?php echo $data['modifiedDate'] ?>"  
+                      >View Data
                     </a>
                     </td>
                     
@@ -92,9 +75,12 @@
                   <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>Nomor Kendaraan</th>
-                    <th>Pajak 1 tahun</th>
-                    <th>Pajak 5 tahun</th>
+                    <th>Plant Nomor Kendaraan</th>
+                    <th>Nomor Uji Kendaraan</th>
+                    <th>Sisa Bulan</th>
+                    <th>Sisa Hari</th>
+                    <th>Masa Berlaku</th>
+                    <th>Status</th>
                     <th>Created Date</th>
                     <th>Modified Date</th>
                     <th>Aaction</th>
@@ -122,38 +108,35 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form method="POST" action="add/tambah_pajak_kendaraan.php" enctype="multipart/form-data">
+            <form method="POST" action="add/tambah_kir.php" enctype="multipart/form-data">
               <div class="modal-body">
             
                   <div class="row">
-               
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Pilih Nomor Kendaraan</label>
-
-                        <select class="form-control" id="kendaraan_pajak" required>
-                          <option value="">Pilih Nomor Kendaraan</option>
+                        <label>Plat Nomor Kendaraan</label>
+                        <select class="form-control" id="kendaraan_kir" required>
+                          <option value="">Pilih Plat Nomor Kendaraan</option>
                         </select>
                         <input type="hidden" id="selectedID" name="id_kendaraan">
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <!-- text input -->
                       <div class="form-group">
-                        <label>Jatuh Tempo Pajak 1 Tahun</label>
-                        <input type="date" class="form-control" placeholder="" name="pajak1thn" maxlength="20" required>
-                      </div>
-                    </div>
+                        <label for="nomor_uji">Nomor Uji Kendaraan</label>
+                        <input type="text" id="nomor_uji" class="form-control text-uppercase" placeholder="Nomor Uji Kendaraan" name="nomor_uji" maxlength="20" required>
+                     </div>
+                    </div>  
                   </div>
                   <div class="row">
-                  <div class="col-sm-6">
-                      <!-- text input -->
+                    <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Jatuh Tempo Pajak 5 Tahun</label>
-                        <input type="date" class="form-control" placeholder="" name="pajak5thn" maxlength="20" required>
-                      </div>
-                    </div>
+                        <label for="masa_aktif">Masa Berlaku</label>
+                        <input type="date" id="masa_aktif" class="form-control" placeholder="" name="masa_aktif" required>
+                     </div>
+                    </div>  
                   </div>
+
 
                       
          
@@ -175,7 +158,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">View Data Pajak Kendaraan</h4>
+              <h4 class="modal-title">View Data KIR</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -215,7 +198,7 @@
           icon: "success",
           confirmButtonText: "OKE"
         }).then((result)=>{
-          window.location=("delete/hapus_bpjs.php?id="+data_id);
+          window.location=("delete/hapus_kir.php?id="+data_id);
           // if(result.isConfirmed){
 
           // }
